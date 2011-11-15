@@ -1,19 +1,23 @@
 {% extends "base.html" %}
+
 {% block titulo %}
-	{{ artigo.titulo }} -
-	{{ block.super }}
+  {{ flatpage.title}} -
+  {{ block.super}}
 {% endblock %}
+
 {% block conteudo %}
 	<div class="artigo">
 		{% block h2 %}
 			<h2>
-				{{ artigo.titulo }}
+				{{ flatpage.title }}
 			</h2>
 		{% endblock %}
 		<div class="conteudo">
 		
-			{{ artigo.conteudo }}
+			{{ flatpage.content|linebreaks }}
 		
 		</div>
 	</div>
 {% endblock %}
+
+

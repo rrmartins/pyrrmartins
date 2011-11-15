@@ -4,31 +4,7 @@
 {% block titulo %}Blog do Rodrigo Martins{% endblock %}
 </title>
 <link rel="alternate" type="application/rss+xml" title="Ultimos artigos do Rodrigo Martins" href="/rss/ultimos/"/>
-<style type="text/css">
-body {
-font-family: arial;
-background-color: green;
-color: white;
-}
-h1 {
-margin-bottom: 10px;
-}
-h2 {
-margin: 0;
-background-color: #eee;
-padding: 5px;
-font-size: 1.2em;
-}
-.artigo {
-border: 1px solid black;
-77
-background-color: white;
-color: black;
-}
-.conteudo {
-padding: 10px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}layout_page.css"/>
 </head>
 <body>
 <h1>
@@ -36,12 +12,11 @@ padding: 10px;
 	Blog do Rodrigo Martins
 {% endblock %}
 </h1>
-{% block h2 %}
-
-{% endblock %}
 
 {% block conteudo %}
+	{% block h2 %}
 
+	{% endblock %}
 {% endblock %}
 {% include "rodape.html" %}
 </body>

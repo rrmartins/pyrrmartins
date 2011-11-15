@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block conteudo %}
+<img src="{{ MEDIA_URL }}foto.jpg"/>
 	{% for artigo in latest %}
 		<div class="artigo">
 			<a href="{% url blog.views.artigo artigo_id=artigo.id %}">
