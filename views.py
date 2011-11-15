@@ -17,7 +17,7 @@ class FormContato(forms.Form):
         %(mensagem)s
         """ % self.cleaned_data
   
-        send_mail( subject = titulo, message = texto, form_email = destino, recipient_list = [destino],)
+        send_mail( subject = titulo, message = texto, from_email = destino, recipient_list = [destino],)
 
 
 def contato(request):

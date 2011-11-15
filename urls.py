@@ -16,5 +16,5 @@ urlpatterns = patterns('',
     (r'^media/(.*)$', 'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT}),
     (r'^contato/$', 'views.contato'),
- 
+    (r'^comments/', include('django.contrib.comments.urls')), 
 )

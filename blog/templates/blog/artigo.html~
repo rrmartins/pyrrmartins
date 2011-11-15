@@ -1,19 +1,34 @@
 {% extends "base.html" %}
+{% load comments %}
 {% block titulo %}
 	{{ artigo.titulo }} -
 	{{ block.super }}
 {% endblock %}
-	{% block conteudo %}
-		<div class="artigo">
-			{% block h2 %}
-				<h2>
-					{{ artigo.titulo }}
-				</h2>
-			{% endblock %}
-			<div class="conteudo">
-			
-				{{ artigo.conteudo }}
-			
+{% block conteudo %}
+	<div class="artigo">
+		{% block h2 %}
+				{{ artigo.titulo }}
+		{% endblock %}
+		<div class="conteudo">
+		
+			{{ artigo.conteudo }}
+
+
+			<h3>Comentarios</h3>
+			{% get_comment_list for artigo as comentarios %}
+			{% for comentario in comentarios %}
+				<div class="comentarios">
+					Nome: {{comentario.name }}<br/>
+					{% if comentario.url %}
+						URL: {{ comentario.url }}
+					{% endif %}<br/>
+					{{ comentario.comment|linebreaks }}<br/>
+				</div>
+			{% endfor %}	
+			<div class="comentarios">
+				<h3>Envie um Comentario</h3>
+                                {% render_comment_form for artigo %}
 			</div>
 		</div>
+	</div>
 {% endblock %}

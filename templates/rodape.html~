@@ -1,0 +1,3 @@
+<div class="rodape">
+<a href="{% url views.contato %}"> Para contato, clique aqui! </a>
+</div>

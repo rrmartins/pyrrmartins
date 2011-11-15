@@ -88,24 +88,4 @@ color: black;
 .conteudo {
 padding: 10px;
 }
-/* Formularios */
-form label {
-display: block;
-}
-textarea {
-height: 100px;
-}
-th {
-text-align: right;
-padding-right: 5px;
-}
-/* Comentarios */
-.comentarios {
-border-top: 1px solid silver;
-margin-top: 20px;
-}
-.comentarios hr {
-border-width: 0;
-height: 1px;
-border-top: 1px solid #ddd;
-}
+

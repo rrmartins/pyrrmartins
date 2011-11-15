@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'django.contrib.comments',
     'blog',
     'django.contrib.syndication',
     'django.contrib.flatpages',
@@ -156,7 +157,7 @@ LOGGING = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'rodrigo@rrmartins.com'
-EMAIL_HOST_PASSWORD = 'secretoXXX'
+EMAIL_HOST_PASSWORD = '09042008Na'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
