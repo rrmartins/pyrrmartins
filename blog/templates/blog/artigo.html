@@ -5,6 +5,9 @@
 	{{ block.super }}
 {% endblock %}
 {% block conteudo %}
+{% with artigo as objeto %}
+{% include "tags/tags_para_objeto.html" %}
+{% endwith %}
 	<div class="artigo">
 		<h2>
 			{% block h2 %}

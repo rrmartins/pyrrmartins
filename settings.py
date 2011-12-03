@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 # Django settings for pyblog project.
 import os
 
 PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+LOCAL = False
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -36,12 +38,21 @@ TIME_ZONE = 'America/Sao_Paulo'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'pt-BR'
 
+LANGUAGE = (
+    ('pt-br', u'Português'),
+    ('en', u'Inglês'),
+    ('es', u'Espanhol'),
+)
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
-
+try:
+    from local_settings import *
+except ImportError:
+    pass
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
 USE_L10N = True
@@ -103,9 +114,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
-ROOT_URLCONF = 'pyblog.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -128,6 +140,10 @@ INSTALLED_APPS = (
     'blog',
     'django.contrib.syndication',
     'django.contrib.flatpages',
+    'categoria',
+    'south',
+    'galeria',
+    'tags',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
