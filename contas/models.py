@@ -60,14 +60,24 @@ class Conta(models.Model):
     descricao = models.TextField(blank=True)
 
 class ContaPagar(Conta):
-    def save(self, *arg, **kwargs):
+    def save(self, *args, **kwargs):
         self.operacao = CONTA_OPERACAO_DEBITO
-        super(ContaPager, self).save(*args, **kwargs)
+        super(ContaPagar, self).save(*args, **kwargs)
 
 class ContaReceber(Conta):
     def save(self, *args, **kwargs):
         self.operacao = CONTA_OPERACAO_CREDITO
         super(ContaReceber, self).save(*args, **kwargs)
+
+class Pagamento(models.Model):
+    class Meta:
+        abstract = True
+    data_pagamento = models.DateField()
+    valor = models.DecimalField(max_digits=15, decimal_places=2)
+class PagamentoPago(Pagamento):
+    conta = models.ForeignKey('ContaPagar')
+class PagamentoRecebido(Pagamento):
+    conta = models.ForeignKey('ContaReceber')
 
 
 
