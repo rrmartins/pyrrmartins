@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'south',
     'galeria',
     'tags',
+    'contas',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
