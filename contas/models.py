@@ -3,15 +3,36 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _ 
 # Create your models here.
 
+class HistoricoManager(models.Manager):
+    def get_query_set(self):
+        query_set = super(HistoricoManager, self).get_query_set()
+        return query_set.extra(select = {'_valor_total': """select sum(valor * case operacao when 'c' then 1 else -1 end)
+                                                               from contas_conta 
+                                                              where contas_conta.historico_id = contas_historico.id """ })
+
 class Historico(models.Model):
     class Meta:
         ordering = ('descricao',)
  
     descricao = models.CharField(max_length=50)
+    
+    objects = HistoricoManager()
+    def valor_total(self):
+        return self._valor_total or 0.0
 
     def __unicode__(self):
         return self.descricao
 
+class PessoaManager(models.Manager):
+    def get_query_set(self):
+        query_set = super(PessoaManager, self).get_query_set()
+        return query_set.extra(
+                select = {
+                     '_valor_total': """select sum(valor * case operacao when 'c' then 1 else -1 end) from contas_conta
+                                          where contas_conta.pessoa_id = contas_pessoa.id""",
+                     '_quantidade_contas': """select count(valor) from contas_conta
+                                                where contas_conta.pessoa_id = contas_pessoa.id""",
+                } )
 
 class Pessoa(models.Model):
     class Meta:
@@ -19,6 +40,14 @@ class Pessoa(models.Model):
 
     nome = models.CharField(max_length=50)
     telefone = models.CharField(max_length=25, blank=True)
+    
+    objects = PessoaManager()
+    
+    def valor_total(self):
+        return self._valor_total or 0.0
+
+    def quantidade_contas(self):
+        return self._quantidade_contas or 0
 
     def __unicode__(self):
         return self.nome

@@ -4,10 +4,10 @@ from django.contrib.admin.options import ModelAdmin, TabularInline
 from models import Pessoa, Historico, Conta, ContaPagar, ContaReceber, PagamentoPago, PagamentoRecebido
 
 class AdminPessoa(ModelAdmin):
-    list_display = ('nome', 'telefone',)
+    list_display = ('nome', 'telefone','valor_total','quantidade_contas',)
 
 class AdminHistorico(ModelAdmin):
-    list_display = ('descricao',)
+    list_display = ('descricao','valor_total',)
 
 class AdminConta(ModelAdmin):
     list_display = ('data_vencimento', 'valor', 'status', 'operacao', 'historico', 'pessoa',)
@@ -29,6 +29,14 @@ class AdminContaPagar(ModelAdmin):
   
     inlines = [InlinePagamentoPago,]
     date_hierarchy = 'data_vencimento'
+
+    def changelist_view(self, request, extra_context={}):
+        qs = self.queryset(request)
+        extra_context['soma'] = sum(
+              [i['valor'] for i in qs.values('valor')]
+            )
+        extra_context['total'] = qs.count()
+        return super( AdminContaPagar, self).changelist_view(request, extra_context)
 
 class InlinePagamentoRecebido(TabularInline):
     model = PagamentoRecebido
