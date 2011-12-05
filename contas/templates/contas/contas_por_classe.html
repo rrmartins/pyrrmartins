@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+    {% load i18n %}
+{% block titulo %}{{ titulo }} - {{ block.super }}{% endblock %}
+{% block h1 %}{{ titulo }}{% endblock %}
+    {% block conteudo %}{{ block.super }}
+    {% regroup contas by get_status_display as contas %}
+    
+    {% for grupo in contas %}
+    <h2>{{ grupo.grouper }}</h2>
+      {% for conta in grupo.list %}
+      <div>
+        <a href="{{ conta.get_absolute_url }}">{{ conta }}</a>
+      </div>
+      {% endfor %}
+    {% endfor %}  
+
+
+    {% endblock conteudo %}

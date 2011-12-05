@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')), 
     (r'^galeria/', include('galeria.urls')),
     (r'^tags/', include('tags.urls')),
+    (r'^contas/', include('contas.urls')),
 )
 
 if settings.LOCAL:
