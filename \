@@ -3,7 +3,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext as _
-from django.core.paginator import Paginator
 from models import ContaPagar, ContaReceber, CONTA_STATUS_APAGAR
 from forms import FormPagamento
 
@@ -34,7 +33,5 @@ def conta_pagamento(request, conta_id, classe):
 
 def contas_por_classe(request, classe, titulo):
     contas = classe.objects.order_by('status','data_vencimento')
-    paginacao = Paginator(contas, 2)
-    pagina = paginacao.page(request.GET.get('pagina',1))
     titulo = _(titulo)
     return render_to_response( 'contas/contas_por_classe.html', locals(),context_instance=RequestContext(request), )

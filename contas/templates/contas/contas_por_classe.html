@@ -3,8 +3,8 @@
 {% block titulo %}{{ titulo }} - {{ block.super }}{% endblock %}
 {% block h1 %}{{ titulo }}{% endblock %}
     {% block conteudo %}{{ block.super }}
-    {% regroup contas by get_status_display as contas %}
-    
+    <!--{ % regroup contas by get_status_display as contas % }-->
+    {% regroup pagina.object_list by get_status_display as contas %}
     {% for grupo in contas %}
     <h2>{{ grupo.grouper }}</h2>
       {% for conta in grupo.list %}
@@ -14,5 +14,13 @@
       {% endfor %}
     {% endfor %}  
 
+    <hr/>
+     <div class="paginacao">
+Paginas:
+{% for pagina_numero in paginacao.page_range %}
+<a href="{{ request.path }}?pagina={{ pagina_numero }}"> {{ pagina_numero }}
+</a>
+{% endfor %}
+</div>
 
     {% endblock conteudo %}
