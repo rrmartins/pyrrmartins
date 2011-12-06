@@ -109,3 +109,11 @@ border-width: 0;
 height: 1px;
 border-top: 1px solid #ddd;
 }
+.mensagem {
+      margin: 5px;
+      padding: 5px;
+      background: yellow;
+      border: 3px solid red;
+      font-weight: bold;
+      color: red;
+}

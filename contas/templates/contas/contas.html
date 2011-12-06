@@ -11,6 +11,8 @@
       {% endfor %}
     </ul>
     <a href="{% url contas_a_pagar %}">{% trans "Ver todas" %}</a>
+    <a href="{% url nova_conta_a_pagar %}">{% trans "Criar nova" %}
+    </a>
     <h2>{% trans "Contas a Receber" %}</h2>
     <ul>
       {% for conta in contas_a_receber %}
@@ -18,4 +20,6 @@
       {% endfor %}
     </ul>
     <a href="{% url contas_a_receber %}">{% trans "Ver todas" %}</a>
+    <a href="{% url nova_conta_a_pagar %}">{% trans "Criar nova" %}
+    </a>
     {% endblock conteudo %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+    {% block titulo %}{{ titulo }} - {{ block.super }}{% endblock %}
+    {% block h1 %}{{ titulo }}{% endblock %}
+    {% block conteudo %}
+    <form method="post">
+      <table class="form">
+        {% csrf_token %}
+        {{ formu }}
+        <tr>
+           <th>&nbsp;</th>
+           <td><input type="submit" value="Salvar"/></td>
+        </tr>
+      </table>
+    </form>
+    {% endblock conteudo %}

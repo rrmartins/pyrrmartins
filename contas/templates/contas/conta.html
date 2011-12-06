@@ -2,6 +2,8 @@
     {% load i18n %}
 {% block titulo %}{{ conta }} - {{ block.super }}{% endblock %} {% block h1 %}{{ conta }}{% endblock %}
     {% block conteudo %}
+    <a href="editar/">{% trans "Editar" %}</a>
+    <a href="excluir/">{% trans "Excluir" %}</a>
     <ul>
       <li>{% trans "Valor" %}: {{ conta.valor|floatformat:2 }}</li>
       <li>

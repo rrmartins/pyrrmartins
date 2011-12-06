@@ -27,6 +27,10 @@
 			{% trans "Blog do Rodrigo Martins"%}
 		{% endblock topo %}
 		</div>
+                {% for msg in messages %}
+                    <div class="mensagem">{{ msg }}</div>
+                {% endfor %}
+                
 		<div id="menu">
 		{% block menu %}
 			{% spaceless %}
