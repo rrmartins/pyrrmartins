@@ -1,6 +1,9 @@
 {% extends "base.html" %}
+{% load pagination_tags %}
 {% block conteudo %}
-<img src="{{ MEDIA_URL }}foto.jpg"/>
+<!--img src="{{ MEDIA_URL }}foto.jpg"/-->
+        {% regroup pagina.object_list by get_status_display as artigos %}
+	{% autopaginate latest 2 %}
 	{% for artigo in latest %}
 		<div class="artigo">
 			<a href="artigo/{{ artigo.slug }}">
@@ -14,4 +17,9 @@
 		</div>
 	<br/>
 	{% endfor %}
+	<hr/>
+ <div class="paginacao">
+	Paginas:
+	 {% paginate %}
+ </div>
 {% endblock %}

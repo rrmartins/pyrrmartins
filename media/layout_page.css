@@ -24,9 +24,9 @@ margin: 20px;
 }
 #topo #foto {
 float: right;
-background-image: url(/media/foto.jpg);
+background-image: url(/media/blog.png);
 background-repeat: no-repeat;
-background-position: -20px -30px;
+background-position: -10px -13px;
 width: 56px;
 height: 56px;
 border: 1px solid #47a;

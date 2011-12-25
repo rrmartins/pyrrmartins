@@ -8,6 +8,9 @@ LOCAL = False
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+LOGIN_URL = '/entrar/'
+LOGOUT_URL = '/sair/'
+
 ADMINS = (
      ('Rodrigo Martins', 'rodrigo@rrmartins.com'),
 )
@@ -107,6 +110,8 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+LOGIN_REDIRECT_URL = '/contas/'
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -115,6 +120,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -125,6 +131,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
+
 )
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -152,6 +159,8 @@ INSTALLED_APPS = (
     'galeria',
     'tags',
     'contas',
+    'mordomo',
+    'pagination',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

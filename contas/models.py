@@ -72,7 +72,9 @@ CONTA_STATUS_CHOICES = (
 class Conta(models.Model):
     class Meta:
         ordering = ('-data_vencimento', 'valor',)
-
+        permissions = (
+                ('ver_todos_os_usuarios', 'Ver todos os usuarios'),
+                )
     pessoa = models.ForeignKey('Pessoa')
     usuario = models.ForeignKey(User)
     historico = models.ForeignKey('Historico')

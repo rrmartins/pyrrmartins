@@ -4,7 +4,7 @@
     {% block conteudo %}
     <ul>
         {% for tag in lista %}
-        <li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+        <li><a href="{{ tag.nome }}">{{ tag }}</a></li>
         {% endfor %}
     </ul>
     {% endblock conteudo %}

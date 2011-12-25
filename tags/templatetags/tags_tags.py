@@ -10,4 +10,5 @@ def tags_para_objeto(objeto):
             content_type=tipo_dinamico,
             object_id=objeto.id,
             )
+    print itens
     return [item.tag for item in itens]

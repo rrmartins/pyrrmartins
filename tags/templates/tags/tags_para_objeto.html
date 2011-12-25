@@ -2,6 +2,6 @@
     <p>
     Tags:
     {% for tag in objeto|tags_para_objeto %}
-    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+      <a href="/tags/{{ tag.nome }}">{{ tag }}</a>
     {% endfor %}
     </p>

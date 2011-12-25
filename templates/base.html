@@ -40,7 +40,21 @@
                                         <li><a href="{% url tags.views.tags %}">Tags</a></li>
                                         <li><a href="/sobre-mim/">Sobre mim</a></li>
 					<li><a href="{% url views.contato %}">Contato</a></li>
-				</ul>
+ 					<li><a href="{% url contas %}">Contas</a></li>
+			                {% if user.is_authenticated %}
+                                            <li> <a href="{% url sair %}">{% trans "Sair" %}</a></li>
+				            <li>
+        					<a href="{% url mudar_senha %}">{% trans "Mudar senha" %}</a>
+        				    </li>
+					{% else %}
+          				    <li>
+          					<a href="{% url entrar %}">{% trans "Entrar" %}</a>
+          				    </li>
+          				    <li>
+          					<a href="{% url registrar %}">{% trans "Registre-se" %}</a>
+          				    </li>
+					{% endif %}
+  				</ul>
 			{% endspaceless %}
 		{% endblock menu %}
 		</div>

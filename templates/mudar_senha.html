@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+    {% load i18n %}
+    {% block titulo %}{% trans "Mudar senha" %} -
+    {{ block.super }}{% endblock %}
+    {% block h1 %}{% trans "Mudar senha" %}{% endblock %}
+    {% block conteudo %}{{ block.super }}
+    <form method="post">
+     <table class="form">
+{% csrf_token %}
+{{ form }}
+      <tr>
+       <th>&nbsp;</th>
+       <td>
+       <input type="submit" value="{% trans "Mudar senha" %}"/>
+       </td>
+ </tr>
+     </table>
+    </form>
+    {% endblock conteudo %}

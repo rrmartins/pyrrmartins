@@ -21,6 +21,18 @@ urlpatterns = patterns('',
     (r'^galeria/', include('galeria.urls')),
     (r'^tags/', include('tags.urls')),
     (r'^contas/', include('contas.urls')),
+    (r'^entrar/$', 'django.contrib.auth.views.login',
+            {'template_name': 'entrar.html'}, 'entrar'),
+    (r'^sair/$', 'django.contrib.auth.views.logout',
+            {'template_name': 'sair.html'}, 'sair'),
+    (r'^registrar/$', 'views.registrar', {}, 'registrar'),
+    (r'^todos_os_usuarios/$', 'views.todos_os_usuarios',
+            {}, 'todos_os_usuarios'),
+    (r'^mudar_senha/$',
+        'django.contrib.auth.views.password_change',{'template_name': 'mudar_senha.html'},'mudar_senha'),
+    (r'^mudar_senha/concluido/$','django.contrib.auth.views.password_change_done',
+        {'template_name': 'mudar_senha_concluido.html'}, 'mudar_senha_concluido'),
+
 )
 
 if settings.LOCAL:
